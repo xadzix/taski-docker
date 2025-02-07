@@ -124,7 +124,7 @@ jobs:
           push: true
           tags: xadzix/taski_gateway:latest
   
-   deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: 
       - build_and_push_to_docker_hub
@@ -159,4 +159,4 @@ jobs:
           # Выполняет миграции и сбор статики
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
-          sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/ 
+          sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
